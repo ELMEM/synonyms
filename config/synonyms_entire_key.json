@@ -1,0 +1,17 @@
+[
+  {"reg": ["name", "name pin yin", "name used", "name used before", "nick name", "user name", "username", "surname",
+     "first name", "last name", "middle name", "english name", "chinese name", "en name", "zh name", "old name",
+     "new name", "姓名", "曾用名", "姓名拼音", "英文名", "中文名"], "sub": "*"},
+  {"reg": ["name used", "name used before", "曾用名"], "sub": "*"},
+  {"reg": ["date", "date year"], "sub": "*"},
+  {"reg": ["date", "date month"], "sub": "*"},
+  {"reg": ["date", "date day"], "sub": "*"},
+  {"reg": ["date", "date iso"], "sub": "*"},
+  {"reg": ["aliases", "name"], "sub": "*"},
+  {"reg": ["business", "business demand", "business name"], "sub": "*"},
+  {"reg": ["end date"], "sub": ["date end iso"]},
+  {"reg": ["company", "hospital", "school"], "sub": [""]},
+  {"reg": ["due date", "due"], "sub": "*"},
+  {"reg": ["start date"], "sub": ["date start iso"]},
+  {"reg": ["business scope", "scope", "operation scope"], "sub": "*"}
+]

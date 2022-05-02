@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: synonyms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: synonyms
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: synonyms
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+        - name: synonyms
+          image: harbor.nadileaf.com/ml-model/synonyms:cpu-1.0.0
+          imagePullPolicy: Always
+
+          resources:
+            requests:
+              cpu: 200m
+              memory: 2Gi
+            limits:
+              cpu: "4"
+              memory: 4Gi
+
+          command:
+            - bash
+            - -c
+            - |
+              cd /code/synonyms
+              git pull
+              python server.py > /data/synonyms/log/server.log 2>&1 &
+              python ignore.py
+      imagePullSecrets:
+        - name: harbor-pull-secret
